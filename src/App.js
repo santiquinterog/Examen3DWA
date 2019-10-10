@@ -5,11 +5,12 @@ import Main from './components/Main';
 import Zindex from './components/Zindex';
 
 function App() {
+
   return (
     <div className="App">
-      <Menu/>
-      <Main/>
-      {/*<Zindex/>*/}
+      <Menu />
+      <Main />
+      <Zindex/>
     </div>
   );
 }

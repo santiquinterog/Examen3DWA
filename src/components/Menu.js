@@ -1,46 +1,51 @@
 import React, { Component } from 'react';
-import { getData } from './api';
 
 class Menu extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-          posts: [],
-          loading: true,
+            hits: []
         };
-        this.renderPosts = this.renderPosts.bind(this); 
-      }
-    componentDidMount() {
-        getData()
-          .then((res) => {
-            this.setState({
-              posts: res.data,
-              loading: false,
-            });
-          })
-          .catch((err) => console.log(err));
-        this.renderPosts(); 
-      } 
+        this.getData = this.getData.bind(this);
+    }
 
-    renderPosts ()  {
-        this.state.posts.map(post => {
-            const { Players, Tournaments, Gallery, News} = post;
-            
-            return (
-            <div>
-                <div className="nav">
-                    <ul>
-                        <li>{Players}</li>
-                        <li>{Tournaments}</li>
-                        <li>{Gallery}</li>
-                        <li>{News}</li>
-                    </ul>
-                </div>
+    componentDidMount() {
+        this.getData();
+    }
+
+    handleChange(e) {
+
+    }
+
+    getData(){
+        fetch('https://dwaapi.juvasquez88.now.sh/atp')
+            .then(response => response.json())
+            .then(data => this.setState({ hits: data.hits }));
+    }
+
+    render() {
+
+        return (
+            <div className="nav">
+                {
+                    this.state.hits.map(hit => {
+                        return (
+                            <div>
+                                <ul>
+
+                                    <li>{hit.Players}</li>
+                                    <li>Torneos</li>
+                                    <li>Galeria</li>
+                                    <li>Noticias</li>
+
+                                </ul>
+                            </div>
+                        );
+                    })
+                }
             </div>
-            );
-        });
+        );
     }
 }
-
-export default Menu;
+    export default Menu;
