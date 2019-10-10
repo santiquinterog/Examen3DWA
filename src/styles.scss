@@ -1,3 +1,67 @@
-body{
-    background-color: green;
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+$colorWhite: White;
+
+%button{
+    padding: 3px;
+    background-color: black;
+    border-radius: 10px;
+    border: 0px;
+    color: $colorWhite;
+    font-weight: bold;
+    padding: 10px;
+    width: 95px;
+}
+
+.App{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.nav{
+    background-color: black;
+    width: 20vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    color: $colorWhite;
+}
+
+.main{
+    background-color: $colorWhite;
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+    .lista{
+        width: 50%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.zindex{
+    background-color: gray;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
